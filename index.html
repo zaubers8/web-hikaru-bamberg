@@ -604,7 +604,6 @@ function setLang(l){
   document.title=l==='en'?'Hikaru Sushi & Asia Kitchen – Bamberg':'Hikaru Sushi & Asia Kitchen – Bamberg';
 }
 langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-if((navigator.language||'').toLowerCase().startsWith('en'))setLang('en');
 
 // ---------- Nav ----------
 const nav=document.getElementById('nav'),links=document.getElementById('navLinks'),burger=document.getElementById('burger');
