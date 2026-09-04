@@ -1,4 +1,4 @@
-# Hikaru Sushi & Asia Kitchen – Website
+# Hikaru Sushi & Asian Kitchen – Website
 
 Single-page, bilingual (DE/EN) website. No build step – just static files.
 
