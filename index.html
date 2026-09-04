@@ -51,7 +51,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:.4
 nav.scrolled{background:rgba(10,10,12,.92);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.5rem;letter-spacing:.08em}
-.brand .kanji{font-family:var(--jp);font-weight:700;width:42px;height:42px;display:grid;place-items:center;background:var(--grad);border-radius:12px;color:#fff;font-size:1.3rem;transform:rotate(-6deg)}
+.brand-logo{height:52px;width:auto;display:block;transition:.4s}
+nav.scrolled .brand-logo{height:40px}
+@media(max-width:600px){.brand-logo{height:40px}}
 .brand small{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.3em;color:var(--gold);font-weight:500}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
 .nav-links a{font-size:.88rem;font-weight:500;position:relative;padding:4px 0}
@@ -279,7 +281,7 @@ footer ul a:hover{color:var(--accent-2)}
 <!-- NAV -->
 <nav id="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand"><span class="kanji">光</span><span>Hikaru<small>Sushi & Asian Kitchen</small></span></a>
+    <a href="#top" class="brand"><img src="images/logo.png" alt="Hikaru Sushi & Asian Kitchen" class="brand-logo"></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about"><span class="de">Über uns</span><span class="en">About</span></a></li>
       <li><a href="#menu"><span class="de">Speisekarte</span><span class="en">Menu</span></a></li>
@@ -565,7 +567,7 @@ footer ul a:hover{color:var(--accent-2)}
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#top" class="brand" style="margin-bottom:16px"><span class="kanji">光</span><span>Hikaru<small>Sushi & Asian Kitchen</small></span></a>
+        <a href="#top" class="brand" style="margin-bottom:16px"><img src="images/logo.png" alt="Hikaru Sushi & Asian Kitchen" class="brand-logo"></a>
         <p class="de">Frisches Sushi, Poke Bowls und japanische Küche in Bamberg. Wir freuen uns auf Sie!</p>
         <p class="en">Fresh sushi, poke bowls and Japanese cuisine in Bamberg. We look forward to seeing you!</p>
         <div class="social">
