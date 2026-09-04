@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hikaru Sushi & Asia Kitchen – Bamberg</title>
+<meta name="description" content="Hikaru Sushi & Asia Kitchen in Bamberg – frisches Sushi, Poke Bowls, japanische Hauptgerichte und asiatische Küche. Gaustadter Hauptstraße 92, 96049 Bamberg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --ink:#0a0a0c; --ink-2:#131316; --ink-3:#1c1c21;
+  --paper:#f5f1e8; --muted:#a9a49a;
+  --gold:#d9b25c; --gold-2:#f1d48a;
+  --accent:#ff3b3f; --accent-2:#ff7a45;
+  --grad:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  --radius:18px; --max:1180px;
+  --display:'Bebas Neue',sans-serif; --jp:'Noto Serif JP',serif; --body:'Poppins',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--ink);color:var(--paper);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.04em;line-height:1}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:110px 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold);font-family:var(--jp);font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--grad)}
+.title{font-size:clamp(3rem,7vw,5.2rem);margin-bottom:18px}
+.title em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:620px;font-weight:300;font-size:1.05rem}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:600;font-size:.95rem;letter-spacing:.03em;border:2px solid transparent;cursor:pointer;transition:.3s;font-family:var(--body)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 30px -10px rgba(255,59,63,.7)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px -10px rgba(255,59,63,.9)}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 12px 30px -10px rgba(217,178,92,.7)}
+.btn-gold:hover{background:var(--gold-2);transform:translateY(-3px);box-shadow:0 18px 36px -10px rgba(217,178,92,.9)}
+.btn-ghost{border-color:var(--gold);color:var(--gold)}
+.btn-ghost:hover{background:var(--gold);color:var(--ink);transform:translateY(-3px)}
+
+/* language switch */
+body.lang-en .de{display:none!important}
+body:not(.lang-en) .en{display:none!important}
+.lang-switch{display:flex;border:1px solid rgba(255,255,255,.2);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:600;letter-spacing:.1em}
+.lang-switch button{background:none;border:0;color:var(--muted);padding:7px 12px;cursor:pointer;font-family:var(--body);transition:.25s}
+.lang-switch button.active{background:var(--gold);color:var(--ink)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:.4s}
+nav.scrolled{background:rgba(10,10,12,.92);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.5rem;letter-spacing:.08em}
+.brand .kanji{font-family:var(--jp);font-weight:700;width:42px;height:42px;display:grid;place-items:center;background:var(--grad);border-radius:12px;color:#fff;font-size:1.3rem;transform:rotate(-6deg)}
+.brand small{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.3em;color:var(--gold);font-weight:500}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.88rem;font-weight:500;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--grad);transition:.3s}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-cta{padding:11px 22px;font-size:.85rem}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 100px;
+  background:linear-gradient(180deg,rgba(10,10,12,.55),rgba(10,10,12,.85)),url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat}
+.hero::after{content:"光";position:absolute;right:-2vw;bottom:-6vw;font-family:var(--jp);font-size:34vw;font-weight:700;color:rgba(255,255,255,.035);pointer-events:none;line-height:1}
+.hero-content{position:relative;z-index:1;max-width:760px}
+.badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,59,63,.15);border:1px solid rgba(255,59,63,.5);color:#ffb0b1;padding:8px 16px;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:26px;animation:pulse 2.4s infinite}
+.badge i{color:var(--accent)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,59,63,.35)}50%{box-shadow:0 0 0 10px rgba(255,59,63,0)}}
+.hero h1{font-size:clamp(4rem,11vw,8.5rem);line-height:.92;margin-bottom:10px}
+.hero h1 span{display:block}
+.hero h1 .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .jp{font-family:var(--jp);color:var(--gold);font-size:1.15rem;letter-spacing:.35em;margin-bottom:22px}
+.hero p{font-size:1.15rem;color:#ddd;font-weight:300;max-width:560px;margin-bottom:38px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:60px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12)}
+.hero-meta div{font-size:.85rem;color:var(--muted)}
+.hero-meta strong{display:block;color:#fff;font-weight:600;font-size:1rem}
+.hero-meta i{color:var(--gold);margin-right:8px}
+
+/* marquee */
+.marquee{background:var(--grad);overflow:hidden;padding:14px 0;font-family:var(--display);font-size:1.4rem;letter-spacing:.12em;color:#fff;white-space:nowrap}
+.marquee-track{display:inline-block;animation:scroll 28s linear infinite}
+.marquee-track span{margin:0 34px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.about-img::before{content:"";position:absolute;inset:-18px 18px 18px -18px;border:2px solid var(--gold);border-radius:var(--radius);z-index:-1}
+.about-img .stamp{position:absolute;right:-20px;bottom:40px;background:var(--grad);color:#fff;padding:22px;border-radius:50%;width:120px;height:120px;display:grid;place-items:center;text-align:center;font-family:var(--display);font-size:1.1rem;line-height:1.05;box-shadow:0 20px 40px -10px rgba(255,59,63,.7);transform:rotate(8deg)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.stat{background:var(--ink-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;text-align:center}
+.stat b{display:block;font-family:var(--display);font-size:2.4rem;color:var(--gold);line-height:1}
+.stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* menu */
+#menu{background:var(--ink-2)}
+#menu::before{content:"寿司";position:absolute;left:-1vw;top:60px;font-family:var(--jp);font-size:14vw;font-weight:700;color:rgba(255,255,255,.025);pointer-events:none}
+.menu-head{text-align:center;max-width:720px;margin:0 auto 50px}
+.menu-head .lead{margin:0 auto}
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.tab{background:transparent;border:1.5px solid rgba(255,255,255,.15);color:var(--muted);padding:11px 22px;border-radius:999px;cursor:pointer;font-family:var(--body);font-weight:500;font-size:.88rem;transition:.3s}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 24px -8px rgba(255,59,63,.7)}
+.menu-panel{display:none;grid-template-columns:1fr 1fr;gap:14px 60px;animation:fade .5s}
+.menu-panel.active{display:grid}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.dish{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;padding:16px 0;border-bottom:1px dashed rgba(255,255,255,.1)}
+.dish h4{grid-column:2}
+.dish h4{font-weight:600;font-size:1rem;display:flex;align-items:baseline;gap:10px}
+.dish h4 .no{font-size:.7rem;color:var(--gold);font-weight:600;letter-spacing:.05em}
+.dish h4 .tag{font-size:.62rem;background:var(--accent);color:#fff;padding:2px 7px;border-radius:4px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.dish h4 .veg{background:#3aa657}
+.dish p{grid-column:2;font-size:.85rem;color:var(--muted);font-weight:300}
+.dish .price{grid-column:1;grid-row:1/3;align-self:start;min-width:78px;font-family:var(--display);font-size:1.35rem;color:var(--gold);white-space:nowrap}
+.menu-cta{text-align:center;margin-top:56px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.lunch{margin-top:70px;background:linear-gradient(135deg,rgba(255,59,63,.14),rgba(255,122,69,.06));border:1px solid rgba(255,122,69,.35);border-radius:var(--radius);padding:34px 40px;display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center}
+.lunch i{font-size:2.4rem;color:var(--accent-2)}
+.lunch h3{font-size:1.9rem;margin-bottom:4px}
+.lunch p{color:var(--muted);font-size:.92rem}
+
+/* gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:260px;gap:14px}
+.tile{position:relative;overflow:hidden;border-radius:14px;cursor:pointer}
+.tile img{width:100%;height:100%;object-fit:cover;transition:.7s}
+.tile:hover img{transform:scale(1.08)}
+.tile::after{content:"\f00e";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;inset:0;display:grid;place-items:center;font-size:1.6rem;color:#fff;background:rgba(255,59,63,.45);opacity:0;transition:.4s}
+.tile:hover::after{opacity:1}
+.tile.tall{grid-row:span 2}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:200;display:none;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:86vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.8)}
+.lb-btn{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.2rem;cursor:pointer;transition:.3s}
+.lb-btn:hover{background:var(--accent)}
+.lb-prev{left:24px;top:50%;transform:translateY(-50%)}.lb-next{right:24px;top:50%;transform:translateY(-50%)}.lb-close{top:24px;right:24px}
+
+/* hours & location */
+#hours{background:var(--ink-2)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.card{background:var(--ink-3);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:38px}
+.card h3{font-size:2rem;margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.card h3 i{color:var(--accent);font-size:1.4rem}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table td{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.95rem}
+.hours-table td:last-child{text-align:right;color:var(--gold);font-weight:500}
+.hours-table tr.today td{color:#fff;font-weight:600}
+.hours-table tr.today td:first-child::before{content:"● ";color:var(--accent)}
+.hours-table .closed td:last-child{color:var(--accent)}
+.note{margin-top:18px;font-size:.85rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.note i{color:var(--gold);margin-top:4px}
+.addr{list-style:none;display:grid;gap:16px;margin-bottom:26px}
+.addr li{display:flex;gap:16px;align-items:flex-start}
+.addr i{width:40px;height:40px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#fff;flex-shrink:0}
+.addr b{display:block;font-weight:600}
+.addr span{color:var(--muted);font-size:.9rem}
+.map{grid-column:1/-1;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08);height:380px}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.1)}
+
+/* reservation */
+.res-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.res-side p{color:var(--muted);margin-bottom:28px}
+.phone-big{display:inline-flex;align-items:center;gap:14px;font-family:var(--display);font-size:2.4rem;color:var(--gold);transition:.3s}
+.phone-big:hover{color:var(--accent)}
+.phone-big i{font-size:1.5rem;color:var(--accent)}
+form{background:var(--ink-2);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:500}
+input,select,textarea{font-family:var(--body);font-size:.95rem;color:#fff;background:var(--ink);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 16px;outline:none;transition:.3s;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,59,63,.15)}
+select option{background:var(--ink)}
+input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1)}
+textarea{min-height:110px;resize:vertical}
+form .btn{grid-column:1/-1;justify-content:center}
+.form-msg{grid-column:1/-1;display:none;padding:16px;border-radius:10px;font-size:.92rem;text-align:center}
+.form-ok{background:rgba(58,166,87,.15);border:1px solid #3aa657;color:#9de3b1}
+.form-err{background:rgba(255,59,63,.12);border:1px solid var(--accent);color:#ffb0b1}
+.form-msg.show{display:block}
+.small{grid-column:1/-1;font-size:.75rem;color:var(--muted)}
+.small a{color:var(--gold)}
+
+/* footer */
+footer{background:#050506;padding:70px 0 30px;border-top:1px solid rgba(255,255,255,.06)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;margin-bottom:50px}
+footer p{color:var(--muted);font-size:.9rem;max-width:380px}
+footer h4{font-family:var(--display);font-size:1.4rem;letter-spacing:.08em;margin-bottom:16px;color:var(--gold)}
+footer ul{list-style:none;display:grid;gap:10px;font-size:.9rem;color:var(--muted)}
+footer ul a:hover{color:var(--accent-2)}
+.social{display:flex;gap:12px;margin-top:20px}
+.social a{width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.12);display:grid;place-items:center;transition:.3s}
+.social a:hover{background:var(--grad);border-color:transparent;transform:translateY(-3px)}
+.copy{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--muted)}
+.copy a{margin-left:18px}.copy a:hover{color:var(--gold)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  section{padding:80px 0}
+  .nav-links{position:fixed;inset:0;background:rgba(10,10,12,.97);flex-direction:column;justify-content:center;gap:34px;font-size:1.3rem;transform:translateX(100%);transition:.4s}
+  .nav-links.open{transform:none}
+  .burger{display:block;z-index:110}
+  .nav-cta{display:none}
+  .about-grid,.info-grid,.res-grid,.menu-panel{grid-template-columns:1fr}
+  .about-img{max-width:420px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .tile.tall{grid-row:auto}
+  .lunch{grid-template-columns:1fr;text-align:center}
+  .foot-grid{grid-template-columns:1fr}
+  .hero::after{font-size:60vw}
+}
+@media(max-width:480px){
+  .wrap{padding:0 18px}
+  .hero{padding:120px 0 70px}
+  .stats{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  form{grid-template-columns:1fr;padding:26px}
+  .field{grid-column:1/-1}
+  .about-img .stamp{right:0;width:100px;height:100px;font-size:.95rem}
+  .phone-big{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="kanji">光</span><span>Hikaru<small>Sushi & Asia Kitchen</small></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"><span class="de">Über uns</span><span class="en">About</span></a></li>
+      <li><a href="#menu"><span class="de">Speisekarte</span><span class="en">Menu</span></a></li>
+      <li><a href="#gallery"><span class="de">Galerie</span><span class="en">Gallery</span></a></li>
+      <li><a href="#hours"><span class="de">Öffnungszeiten</span><span class="en">Hours</span></a></li>
+      <li><a href="#reservation"><span class="de">Reservierung</span><span class="en">Reservation</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switch" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="#reservation" class="btn btn-primary nav-cta"><i class="fa-solid fa-utensils"></i><span class="de">Tisch reservieren</span><span class="en">Book a table</span></a>
+      <button class="burger" id="burger" aria-label="Menü öffnen"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-content">
+    <div class="badge"><i class="fa-solid fa-star"></i><span class="de">Neueröffnung in Bamberg</span><span class="en">Now open in Bamberg</span></div>
+    <div class="jp">光 · ひかる · Bamberg</div>
+    <h1><span>Hikaru</span><span class="accent">Sushi & Asia</span><span>Kitchen</span></h1>
+    <p class="de">Handgerolltes Sushi, kreative Special Rolls, Poke Bowls und japanische Grillgerichte – frisch, laut, farbenfroh und mitten in Bamberg.</p>
+    <p class="en">Hand-rolled sushi, creative special rolls, poke bowls and Japanese grill dishes – fresh, bold, colourful and right in the heart of Bamberg.</p>
+    <div class="hero-actions">
+      <a href="#reservation" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i><span class="de">Tisch reservieren</span><span class="en">Reserve a table</span></a>
+      <a href="[ONLINE-BESTELL-LINK]" target="_blank" rel="noopener" class="btn btn-gold"><i class="fa-solid fa-bag-shopping"></i><span class="de">Online bestellen</span><span class="en">Order online</span></a>
+      <a href="#menu" class="btn btn-ghost"><span class="de">Speisekarte entdecken</span><span class="en">Explore the menu</span><i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+    <div class="hero-meta">
+      <div><i class="fa-solid fa-location-dot"></i><span class="de">Adresse</span><span class="en">Address</span><strong>Gaustadter Hauptstraße 92, 96049 Bamberg</strong></div>
+      <div><i class="fa-solid fa-phone"></i><span class="de">Reservierung</span><span class="en">Reservations</span><strong><a href="tel:+4995161818">0951 – 61818</a></strong></div>
+      <div><i class="fa-solid fa-clock"></i><span class="de">Di – So</span><span class="en">Tue – Sun</span><strong>11:30 – 14:30 · 17:00 – 22:00</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Nigiri</span><span>◆</span><span>Special Rolls</span><span>◆</span><span>Poke Bowls</span><span>◆</span><span>Sashimi</span><span>◆</span><span>Yakisoba</span><span>◆</span><span>Mochi</span><span>◆</span><span>Matcha Latte</span><span>◆</span>
+    <span>Nigiri</span><span>◆</span><span>Special Rolls</span><span>◆</span><span>Poke Bowls</span><span>◆</span><span>Sashimi</span><span>◆</span><span>Yakisoba</span><span>◆</span><span>Mochi</span><span>◆</span><span>Matcha Latte</span><span>◆</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1502364271109-0a9a75a2a9df?auto=format&fit=crop&w=1000&q=80" alt="Sushi-Chef bei der Arbeit / Sushi chef at work">
+      <div class="stamp"><span class="de">Täglich<br>frischer<br>Fisch</span><span class="en">Fresh<br>fish<br>daily</span></div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow"><span class="de">Über uns</span><span class="en">About us</span></div>
+      <h2 class="title"><span class="de">Licht, Farbe <em>& Geschmack</em></span><span class="en">Light, colour <em>& flavour</em></span></h2>
+      <p class="lead de">„Hikaru“ bedeutet auf Japanisch „leuchten“ – und genau das wollen wir: eine Küche, die strahlt. In der Gaustadter Hauptstraße rollen wir jeden Tag Nigiri, Uramaki und unsere hauseigenen Hikaru Special Rolls aus frischem Lachs, Thunfisch und Aal.</p>
+      <p class="lead de" style="margin-top:14px">Dazu gibt es japanische Grillklassiker wie Saketeri und Gyufilet, bunte Poke Bowls, Yakisoba, Wildkräuter-Currys – und zum Abschluss Mochi und Matcha. Egal ob schnelles Mittagsmenü oder entspannter Abend: Willkommen bei Hikaru.</p>
+      <p class="lead en">“Hikaru” means “to shine” in Japanese – and that is exactly what we aim for: a kitchen that glows. On Gaustadter Hauptstraße we roll nigiri, uramaki and our house-made Hikaru Special Rolls with fresh salmon, tuna and eel every single day.</p>
+      <p class="lead en" style="margin-top:14px">Alongside, we serve Japanese grill classics like Saketeri and Gyufilet, colourful poke bowls, yakisoba, wild-herb curries – and mochi and matcha to finish. Quick lunch or a relaxed evening: welcome to Hikaru.</p>
+      <div class="stats">
+        <div class="stat"><b>150+</b><span class="de">Gerichte</span><span class="en">Dishes</span></div>
+        <div class="stat"><b>20</b><span class="de">Special Rolls</span><span class="en">Special rolls</span></div>
+        <div class="stat"><b>100%</b><span class="de">Hausgemacht</span><span class="en">House-made</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head reveal">
+      <div class="eyebrow" style="justify-content:center"><span class="de">Speisekarte</span><span class="en">Our menu</span></div>
+      <h2 class="title"><span class="de">Unsere <em>Highlights</em></span><span class="en">Our <em>highlights</em></span></h2>
+      <p class="lead de">Eine kleine Auswahl unserer Lieblinge. Die komplette Karte mit allen Sushi-Varianten, Menüs und Getränken finden Sie als PDF.</p>
+      <p class="lead en">A small selection of our favourites. The full menu with every sushi option, set menus and drinks is available as a PDF.</p>
+    </div>
+
+    <div class="tabs reveal">
+      <button class="tab active" data-panel="p-sushi">Sushi & Rolls</button>
+      <button class="tab" data-panel="p-mix"><span class="de">Sushi-Menüs</span><span class="en">Sushi sets</span></button>
+      <button class="tab" data-panel="p-starter"><span class="de">Vorspeisen & Suppen</span><span class="en">Starters & soups</span></button>
+      <button class="tab" data-panel="p-main"><span class="de">Hauptgerichte</span><span class="en">Mains</span></button>
+      <button class="tab" data-panel="p-bowl">Poke Bowls & Udon</button>
+      <button class="tab" data-panel="p-dessert"><span class="de">Desserts</span><span class="en">Desserts</span></button>
+      <button class="tab" data-panel="p-drinks"><span class="de">Getränke</span><span class="en">Drinks</span></button>
+    </div>
+
+    <!-- Sushi -->
+    <div class="menu-panel active" id="p-sushi">
+      <div class="dish"><h4><span class="no">H1</span>Yukiko <span class="tag">Special Roll</span></h4><p class="de">Aal, Lachshaut, Gurke, Frischkäse · on top: Lachs, Lachskaviar, Aalsauce (8 Stk.)</p><p class="en">Eel, salmon skin, cucumber, cream cheese · topped with salmon, salmon roe, eel sauce (8 pcs)</p><span class="price">15,90 €</span></div>
+      <div class="dish"><h4><span class="no">H5</span>Hikaru Salmon Roll <span class="tag">Special Roll</span></h4><p class="de">Lachstartar, Frischkäse, Avocado · on top: Lachs, Chili, pikante Mayo (8 Stk.)</p><p class="en">Salmon tartare, cream cheese, avocado · topped with salmon, chilli, spicy mayo (8 pcs)</p><span class="price">15,90 €</span></div>
+      <div class="dish"><h4><span class="no">H2</span>Momo <span class="tag">Special Roll</span></h4><p class="de">Mango, Lachstartar, Gurke, Kaviar · on top: flambierter Lachs, Aal- & pikante Sauce (8 Stk.)</p><p class="en">Mango, salmon tartare, cucumber, caviar · topped with flambéed salmon, eel & spicy sauce (8 pcs)</p><span class="price">14,90 €</span></div>
+      <div class="dish"><h4><span class="no">U5</span>California</h4><p class="de">Gurke, Garnelen, Avocado, Flugfischkaviar (8 Stk.)</p><p class="en">Cucumber, prawn, avocado, flying-fish roe (8 pcs)</p><span class="price">8,90 €</span></div>
+      <div class="dish"><h4><span class="no">U8</span>Philadelphia</h4><p class="de">Lachs, Avocado, Frischkäse (8 Stk.)</p><p class="en">Salmon, avocado, cream cheese (8 pcs)</p><span class="price">8,90 €</span></div>
+      <div class="dish"><h4><span class="no">C1</span>Hikaru Crunchy Roll</h4><p class="de">Lachstartar, Unagisauce, Tsuki-Sauce – knusprig paniert (6 Stk.)</p><p class="en">Salmon tartare, unagi sauce, tsuki sauce – crispy coated (6 pcs)</p><span class="price">12,80 €</span></div>
+      <div class="dish"><h4><span class="no">N1</span>Sake Nigiri</h4><p class="de">Lachs (1 Stk.) · Maguro Thunfisch 4,20 € · Ebi Garnele 3,50 € · Unagi Aal 4,20 €</p><p class="en">Salmon (1 pc) · Maguro tuna €4.20 · Ebi prawn €3.50 · Unagi eel €4.20</p><span class="price">3,90 €</span></div>
+      <div class="dish"><h4><span class="no">S2</span>Sake Sashimi</h4><p class="de">Frischer Lachs, klein (8 Stk.) – groß (16 Stk.) 32,00 €</p><p class="en">Fresh salmon, small (8 pcs) – large (16 pcs) €32.00</p><span class="price">17,00 €</span></div>
+    </div>
+
+    <!-- Sets -->
+    <div class="menu-panel" id="p-mix">
+      <div class="dish"><h4><span class="no">M1</span>Kyoto</h4><p class="de">6 Nigiri, 1 Uramaki (8 Stück)</p><p class="en">6 nigiri, 1 uramaki (8 pcs)</p><span class="price">13,50 €</span></div>
+      <div class="dish"><h4><span class="no">M3</span>Sakura</h4><p class="de">1 Uramaki (8 Stück), 2 Hosomaki (12 Stück)</p><p class="en">1 uramaki (8 pcs), 2 hosomaki (12 pcs)</p><span class="price">13,50 €</span></div>
+      <div class="dish"><h4><span class="no">M4</span>Tokyo</h4><p class="de">4 Nigiri, 1 Uramaki (8 Stück), 8 Sashimi</p><p class="en">4 nigiri, 1 uramaki (8 pcs), 8 sashimi</p><span class="price">20,00 €</span></div>
+      <div class="dish"><h4><span class="no">M6</span>Asahi <span class="tag">Chef's Choice</span></h4><p class="de">2 Lachs-, 2 Maguro-, 2 Ebi-Nigiri, 1 Special Roll, 1 Hosomaki, 1 Crispy Roll, 8 Sashimi</p><p class="en">2 salmon, 2 tuna, 2 prawn nigiri, 1 special roll, 1 hosomaki, 1 crispy roll, 8 sashimi</p><span class="price">45,00 €</span></div>
+      <div class="dish"><h4><span class="no">M8</span>Saisoku <span class="tag veg">Vegetarisch</span></h4><p class="de">1 Uramaki, 1 Kappa Hosomaki, 1 Avocado Hosomaki</p><p class="en">1 uramaki, 1 kappa hosomaki, 1 avocado hosomaki</p><span class="price">15,50 €</span></div>
+      <div class="dish"><h4><span class="no">M11</span>Lunch Bento mit Lachs</h4><p class="de">Gemischte Box mit 3 Stück Uramaki, Lachs, Salat, Reis, Teriyakisauce (Mittag Di–Fr)</p><p class="en">Mixed box with 3 pcs uramaki, salmon, salad, rice, teriyaki sauce (lunch Tue–Fri)</p><span class="price">14,90 €</span></div>
+    </div>
+
+    <!-- Starters -->
+    <div class="menu-panel" id="p-starter">
+      <div class="dish"><h4><span class="no">1</span>Misosuppe <span class="tag veg">Vegan</span></h4><p class="de">Sojabohnen mit Tofu und Seetang</p><p class="en">Soy bean broth with tofu and seaweed</p><span class="price">5,90 €</span></div>
+      <div class="dish"><h4><span class="no">2</span>Tom Kha Gai</h4><p class="de">Hähnchenbrust und Gemüse in Kokosmilch</p><p class="en">Chicken breast and vegetables in coconut milk</p><span class="price">6,50 €</span></div>
+      <div class="dish"><h4><span class="no">6</span>Gyoza</h4><p class="de">Gebratene Teigtaschen mit Hähnchen und Gemüsefüllung</p><p class="en">Pan-fried dumplings with chicken and vegetable filling</p><span class="price">6,90 €</span></div>
+      <div class="dish"><h4><span class="no">8</span>Crispy Pocket</h4><p class="de">Garnelen im Kartoffelmantel</p><p class="en">Prawns in a crispy potato coat</p><span class="price">7,50 €</span></div>
+      <div class="dish"><h4><span class="no">9</span>Korean Fried Chicken <span class="tag">Pikant</span></h4><p class="de">Knusprig frittiertes Hähnchen nach koreanischer Art, pikant</p><p class="en">Korean-style crispy fried chicken, spicy</p><span class="price">8,50 €</span></div>
+      <div class="dish"><h4><span class="no">12</span>Vegan Edamame <span class="tag veg">Vegan</span></h4><p class="de">Gedämpfte grüne Sojabohnen mit Meersalz</p><p class="en">Steamed green soy beans with sea salt</p><span class="price">6,50 €</span></div>
+      <div class="dish"><h4><span class="no">19</span>6 Ebi Tempura</h4><p class="de">Tempura von Riesengarnelen</p><p class="en">King prawn tempura</p><span class="price">18,00 €</span></div>
+      <div class="dish"><h4><span class="no">35</span>Sake Carpaccio</h4><p class="de">Lachs-Carpaccio mit Hausdressing · Thunfisch-Carpaccio 11,90 €</p><p class="en">Salmon carpaccio with house dressing · tuna carpaccio €11.90</p><span class="price">10,90 €</span></div>
+    </div>
+
+    <!-- Mains -->
+    <div class="menu-panel" id="p-main">
+      <div class="dish"><h4><span class="no">136</span>Gyufilet <span class="tag">Signature</span></h4><p class="de">Zartes Rinderfilet auf Zucchinigemüse mit japanischer Steaksauce</p><p class="en">Tender beef fillet on courgette vegetables with Japanese steak sauce</p><span class="price">29,00 €</span></div>
+      <div class="dish"><h4><span class="no">139</span>Kamomiso</h4><p class="de">Barbarie-Entenbrust auf Brokkoli-Zuckerschoten mit Kräuteremulsion und fruchtiger Mango-Miso-Sauce</p><p class="en">Barbary duck breast on broccoli & snow peas with herb emulsion and fruity mango-miso sauce</p><span class="price">26,90 €</span></div>
+      <div class="dish"><h4><span class="no">137</span>Saketeri</h4><p class="de">Gegrilltes Lachsfilet mit Pak-Choi-Gemüse und Teriyaki-Sauce</p><p class="en">Grilled salmon fillet with pak choi and teriyaki sauce</p><span class="price">19,90 €</span></div>
+      <div class="dish"><h4><span class="no">138</span>Toriteri</h4><p class="de">Zartes Hähnchenbrustfilet mit Gemüse und Teriyaki-Sauce</p><p class="en">Tender chicken breast fillet with vegetables and teriyaki sauce</p><span class="price">18,90 €</span></div>
+      <div class="dish"><h4><span class="no">141</span>Wildkräuter Curry</h4><p class="de">Mit Tofu, frischem Gemüse, pikant · auch mit Hähnchen oder Garnelen</p><p class="en">With tofu and fresh vegetables, spicy · also with chicken or prawns</p><span class="price">ab 16,90 €</span></div>
+      <div class="dish"><h4><span class="no">142</span>Entengerichte</h4><p class="de">Knusprige Ente, frisches Gemüse – rotes Curry, Mangosauce oder Xa Ot (Zitronengras & Chili)</p><p class="en">Crispy duck, fresh vegetables – red curry, mango sauce or Xa Ot (lemongrass & chilli)</p><span class="price">22,90 €</span></div>
+      <div class="dish"><h4><span class="no">143</span>Hähnchengerichte</h4><p class="de">Knuspriges Hähnchen, frisches Gemüse – rotes Curry, Mango oder Xa Ot</p><p class="en">Crispy chicken, fresh vegetables – red curry, mango or Xa Ot</p><span class="price">19,90 €</span></div>
+      <div class="dish"><h4><span class="no">140</span>Yakitori Mix</h4><p class="de">2 Ebi, 1 Yasai, 1 Tori Spieße</p><p class="en">Skewers: 2 prawn, 1 vegetable, 1 chicken</p><span class="price">19,90 €</span></div>
+    </div>
+
+    <!-- Bowls & noodles -->
+    <div class="menu-panel" id="p-bowl">
+      <div class="dish"><h4><span class="no">44A</span>Sake Poke Bowl</h4><p class="de">Mix-Salat mit Sushireis, Avocado, Gurke, Edamame, Seetangsalat, Mango, Paprika, Teriyaki und Chili-Mayo · panierter Lachs</p><p class="en">Mixed salad with sushi rice, avocado, cucumber, edamame, seaweed salad, mango, pepper, teriyaki and chilli mayo · coated salmon</p><span class="price">15,90 €</span></div>
+      <div class="dish"><h4><span class="no">44B</span>Sashimi Poke Bowl</h4><p class="de">Thunfisch & Lachs Sashimi</p><p class="en">Tuna & salmon sashimi</p><span class="price">15,90 €</span></div>
+      <div class="dish"><h4><span class="no">44C</span>Tempura Poke Bowl</h4><p class="de">3 Garnelentempura</p><p class="en">3 prawn tempura</p><span class="price">15,00 €</span></div>
+      <div class="dish"><h4><span class="no">44D</span>Tofu Poke Bowl <span class="tag veg">Vegan</span></h4><p class="de">Knuspriger Tofu</p><p class="en">Crispy tofu</p><span class="price">12,90 €</span></div>
+      <div class="dish"><h4><span class="no">145</span>Yakisoba</h4><p class="de">Japanische dünne Bratnudeln – Gemüse, Hähnchen, Ente oder Garnelen</p><p class="en">Thin Japanese stir-fried noodles – vegetables, chicken, duck or prawns</p><span class="price">ab 12,90 €</span></div>
+      <div class="dish"><h4><span class="no">146</span>Yakiudon</h4><p class="de">Gebratene Weizennudeln – Gemüse, Hähnchen, Ente oder Garnelen</p><p class="en">Stir-fried udon wheat noodles – vegetables, chicken, duck or prawns</p><span class="price">ab 13,90 €</span></div>
+      <div class="dish"><h4><span class="no">147</span>Akari</h4><p class="de">Knuspriges Hähnchen mit Gurken-Sesam-Sauce</p><p class="en">Crispy chicken with cucumber-sesame sauce</p><span class="price">14,90 €</span></div>
+      <div class="dish"><h4><span class="no">36</span>Hausgemachter Salat</h4><p class="de">Mit Avocado 6,00 € · Sashimi 7,90 € · Hähnchenfilet 13,90 €</p><p class="en">With avocado €6.00 · sashimi €7.90 · chicken fillet €13.90</p><span class="price">ab 6,00 €</span></div>
+    </div>
+
+    <!-- Desserts -->
+    <div class="menu-panel" id="p-dessert">
+      <div class="dish"><h4><span class="no">D1</span>Mochi Mix</h4><p class="de">3 Stück japanische Reiskuchen mit Eisfüllung</p><p class="en">3 pieces of Japanese rice cakes filled with ice cream</p><span class="price">9,00 €</span></div>
+      <div class="dish"><h4><span class="no">D2</span>Matcha Eis</h4><p class="de">Eine Kugel · Vanille Eis 3,50 €</p><p class="en">One scoop · vanilla ice cream €3.50</p><span class="price">3,50 €</span></div>
+      <div class="dish"><h4><span class="no">D4</span>Okashi</h4><p class="de">Schwarzer Klebreis mit Kokosmilch</p><p class="en">Black sticky rice with coconut milk</p><span class="price">9,00 €</span></div>
+      <div class="dish"><h4><span class="no">D5</span>Bananoku</h4><p class="de">Gebackene Bananen mit frischem Obst und Vanilleeis</p><p class="en">Baked bananas with fresh fruit and vanilla ice cream</p><span class="price">9,00 €</span></div>
+    </div>
+
+    <!-- Drinks -->
+    <div class="menu-panel" id="p-drinks">
+      <div class="dish"><h4><span class="no">300</span>Limetten Calpico <span class="tag">Homestyle</span></h4><p class="de">Calpico, Limette, Soda · auf Wunsch mit Vodka, Gin oder Rum +3,80 €</p><p class="en">Calpico, lime, soda · add vodka, gin or rum +€3.80</p><span class="price">8,00 €</span></div>
+      <div class="dish"><h4><span class="no">306</span>Kokoro Island <span class="tag">Homestyle</span></h4><p class="de">Passionsfrucht, Lychee, Limetten, Minze, Maracujasirup</p><p class="en">Passion fruit, lychee, lime, mint, passion fruit syrup</p><span class="price">8,00 €</span></div>
+      <div class="dish"><h4><span class="no">303</span>Ginger Cooler <span class="tag">Homestyle</span></h4><p class="de">Minze, Ingwer, Gurke, Limetten, Ginger Ale</p><p class="en">Mint, ginger, cucumber, lime, ginger ale</p><span class="price">8,00 €</span></div>
+      <div class="dish"><h4><span class="no">360</span>Matcha Latte</h4><p class="de">0,4 l · Iced Matcha Latte 6,90 € · Iced Strawberry / Mango Matcha 7,50 €</p><p class="en">0.4 l · iced matcha latte €6.90 · iced strawberry / mango matcha €7.50</p><span class="price">6,50 €</span></div>
+      <div class="dish"><h4><span class="no">370</span>Mai Tai</h4><p class="de">Weißer & brauner Rum, Mekhong, Triple Sec, Mandelsirup, Lime Juice, Ananassaft</p><p class="en">White & dark rum, Mekhong, triple sec, almond syrup, lime juice, pineapple juice</p><span class="price">14,00 €</span></div>
+      <div class="dish"><h4><span class="no">329</span>Asahi</h4><p class="de">Japanisches Bier, 0,33 l</p><p class="en">Japanese beer, 0.33 l</p><span class="price">5,80 €</span></div>
+      <div class="dish"><h4><span class="no">388</span>Sake Reiswein</h4><p class="de">0,15 l · Umeshu Pflaumenwein 4,50 €</p><p class="en">0.15 l · Umeshu plum wine €4.50</p><span class="price">4,80 €</span></div>
+      <div class="dish"><h4><span class="no">354</span>Aperol Spritz</h4><p class="de">Campari Soda / Orange 6,70 € · Martini Bianco / Rosso 5,00 €</p><p class="en">Campari soda / orange €6.70 · Martini Bianco / Rosso €5.00</p><span class="price">6,70 €</span></div>
+    </div>
+
+    <div class="menu-cta reveal">
+      <a href="speisekarte.pdf" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i><span class="de">Vollständige Speisekarte</span><span class="en">Full food menu</span></a>
+      <a href="getraenke.pdf" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-solid fa-martini-glass-citrus"></i><span class="de">Getränkekarte</span><span class="en">Drinks menu</span></a>
+    </div>
+
+    <div class="lunch reveal">
+      <i class="fa-solid fa-bowl-rice"></i>
+      <div>
+        <h3><span class="de">Mittagsmenü · Dienstag – Freitag</span><span class="en">Lunch menu · Tuesday – Friday</span></h3>
+        <p class="de">11:30 – 14:30 Uhr: Lunch Bento mit Lachs oder Ente, Gerichte mit Reis ab 14,90 €, Nudelgerichte ab 13,90 €, Sushi Mix ab 14,90 €. Alle Mittagsmenüs werden zusätzlich mit einem Sprossensalat serviert.</p>
+        <p class="en">11:30 – 14:30: lunch bento with salmon or duck, rice dishes from €14.90, noodle dishes from €13.90, sushi mix from €14.90. All lunch sets come with a sprout salad.</p>
+      </div>
+      <a href="#reservation" class="btn btn-ghost"><span class="de">Mittags reservieren</span><span class="en">Book for lunch</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;margin-bottom:50px">
+      <div class="eyebrow" style="justify-content:center"><span class="de">Galerie</span><span class="en">Gallery</span></div>
+      <h2 class="title"><span class="de">Ein Blick in <em>unsere Küche</em></span><span class="en">A look inside <em>our kitchen</em></span></h2>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid"></div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Weiter"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<!-- HOURS & LOCATION -->
+<section id="hours">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:50px">
+      <div class="eyebrow"><span class="de">Öffnungszeiten & Anfahrt</span><span class="en">Hours & location</span></div>
+      <h2 class="title"><span class="de">Besuchen Sie <em>uns</em></span><span class="en">Come <em>visit us</em></span></h2>
+    </div>
+    <div class="info-grid">
+      <div class="card reveal">
+        <h3><i class="fa-regular fa-clock"></i><span class="de">Öffnungszeiten</span><span class="en">Opening hours</span></h3>
+        <table class="hours-table" id="hoursTable">
+          <tr data-day="1" class="closed"><td><span class="de">Montag</span><span class="en">Monday</span></td><td><span class="de">Ruhetag</span><span class="en">Closed</span></td></tr>
+          <tr data-day="2"><td><span class="de">Dienstag</span><span class="en">Tuesday</span></td><td>11:30 – 14:30 · 17:00 – 22:00</td></tr>
+          <tr data-day="3"><td><span class="de">Mittwoch</span><span class="en">Wednesday</span></td><td>11:30 – 14:30 · 17:00 – 22:00</td></tr>
+          <tr data-day="4"><td><span class="de">Donnerstag</span><span class="en">Thursday</span></td><td>11:30 – 14:30 · 17:00 – 22:00</td></tr>
+          <tr data-day="5"><td><span class="de">Freitag</span><span class="en">Friday</span></td><td>11:30 – 14:30 · 17:00 – 22:00</td></tr>
+          <tr data-day="6"><td><span class="de">Samstag</span><span class="en">Saturday</span></td><td>11:30 – 14:30 · 17:00 – 22:00</td></tr>
+          <tr data-day="0"><td><span class="de">Sonntag</span><span class="en">Sunday</span></td><td>11:30 – 14:30 · 17:00 – 22:00</td></tr>
+        </table>
+        <div class="note"><i class="fa-solid fa-circle-info"></i><span class="de">Mittagsmenü Dienstag – Freitag, 11:30 – 14:30 Uhr.</span><span class="en">Lunch menu Tuesday – Friday, 11:30 – 14:30.</span></div>
+      </div>
+      <div class="card reveal">
+        <h3><i class="fa-solid fa-location-dot"></i><span class="de">Kontakt</span><span class="en">Contact</span></h3>
+        <ul class="addr">
+          <li><i class="fa-solid fa-map-pin"></i><div><b>Hikaru Sushi & Asia Kitchen</b><span>Gaustadter Hauptstraße 92<br>96049 Bamberg</span></div></li>
+          <li><i class="fa-solid fa-phone"></i><div><b><a href="tel:+4995161818">0951 – 61818</a></b><span class="de">Reservierung & Bestellung</span><span class="en">Reservations & orders</span></div></li>
+          <li><i class="fa-solid fa-envelope"></i><div><b><a href="mailto:[E-MAIL-ADRESSE]">[E-MAIL-ADRESSE]</a></b><span class="de">Wir antworten schnellstmöglich</span><span class="en">We reply as soon as possible</span></div></li>
+        </ul>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Gaustadter+Hauptstra%C3%9Fe+92%2C+96049+Bamberg" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-solid fa-diamond-turn-right"></i><span class="de">Route planen</span><span class="en">Get directions</span></a>
+      </div>
+      <div class="map reveal">
+        <iframe src="https://www.google.com/maps?q=Gaustadter%20Hauptstra%C3%9Fe%2092%2C%2096049%20Bamberg&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Karte / Map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="wrap res-grid">
+    <div class="res-side reveal">
+      <div class="eyebrow"><span class="de">Reservierung</span><span class="en">Reservation</span></div>
+      <h2 class="title"><span class="de">Tisch <em>reservieren</em></span><span class="en">Book <em>a table</em></span></h2>
+      <p class="de">Sichern Sie sich Ihren Platz – für den schnellen Lunch, das Dinner zu zweit oder die große Runde. Wir melden uns zur Bestätigung. Kurzfristig? Am schnellsten geht's telefonisch.</p>
+      <p class="en">Secure your seat – for a quick lunch, dinner for two or a big group. We'll get back to you to confirm. Short notice? Calling is fastest.</p>
+      <a href="tel:+4995161818" class="phone-big"><i class="fa-solid fa-phone"></i>0951 – 61818</a>
+    </div>
+    <form id="resForm" action="https://api.web3forms.com/submit" method="POST" novalidate class="reveal">
+      <input type="hidden" name="access_key" value="HIER_DEINEN_ACCESS_KEY_EINFUEGEN">
+      <input type="hidden" name="subject" value="Neue Tischreservierung – Hikaru Website">
+      <input type="hidden" name="from_name" value="Hikaru Website">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required></div>
+      <div class="field"><label for="f-email">E-Mail</label><input id="f-email" name="email" type="email" required></div>
+      <div class="field"><label for="f-phone"><span class="de">Telefon</span><span class="en">Phone</span></label><input id="f-phone" name="phone" type="tel"></div>
+      <div class="field"><label for="f-party"><span class="de">Personen</span><span class="en">Guests</span></label>
+        <select id="f-party" name="party" required>
+          <option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9+">9+</option>
+        </select></div>
+      <div class="field"><label for="f-date"><span class="de">Datum</span><span class="en">Date</span></label><input id="f-date" name="date" type="date" required></div>
+      <div class="field"><label for="f-time"><span class="de">Uhrzeit</span><span class="en">Time</span></label><input id="f-time" name="time" type="time" required></div>
+      <div class="field full"><label for="f-msg"><span class="de">Nachricht (optional)</span><span class="en">Message (optional)</span></label><textarea id="f-msg" name="message"></textarea></div>
+      <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fa-solid fa-paper-plane"></i><span class="de">Reservierung senden</span><span class="en">Send reservation</span></button>
+      <div class="form-msg form-ok" id="formOk"><span class="de">Ihre Reservierungsanfrage ist eingegangen – wir freuen uns auf Ihren Besuch!</span><span class="en">Your reservation request has been received – we look forward to your visit!</span></div>
+      <div class="form-msg form-err" id="formErr"><span class="de">Etwas ist schiefgelaufen. Bitte rufen Sie uns an: 0951 – 61818</span><span class="en">Something went wrong. Please call us: 0951 – 61818</span></div>
+      <div class="small"><span class="de">Mit dem Absenden stimmen Sie unserer <a href="datenschutz.html">Datenschutzerklärung</a> zu.</span><span class="en">By submitting you agree to our <a href="datenschutz.html">privacy policy</a>.</span></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand" style="margin-bottom:16px"><span class="kanji">光</span><span>Hikaru<small>Sushi & Asia Kitchen</small></span></a>
+        <p class="de">Frisches Sushi, Poke Bowls und japanische Küche in Bamberg. Wir freuen uns auf Sie!</p>
+        <p class="en">Fresh sushi, poke bowls and Japanese cuisine in Bamberg. We look forward to seeing you!</p>
+        <div class="social">
+          <a href="[INSTAGRAM-LINK]" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="[FACEBOOK-LINK]" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4><span class="de">Navigation</span><span class="en">Navigation</span></h4>
+        <ul>
+          <li><a href="#about"><span class="de">Über uns</span><span class="en">About</span></a></li>
+          <li><a href="#menu"><span class="de">Speisekarte</span><span class="en">Menu</span></a></li>
+          <li><a href="#gallery"><span class="de">Galerie</span><span class="en">Gallery</span></a></li>
+          <li><a href="#hours"><span class="de">Öffnungszeiten</span><span class="en">Hours</span></a></li>
+          <li><a href="#reservation"><span class="de">Reservierung</span><span class="en">Reservation</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span class="de">Kontakt</span><span class="en">Contact</span></h4>
+        <ul>
+          <li>Gaustadter Hauptstraße 92<br>96049 Bamberg</li>
+          <li><a href="tel:+4995161818">0951 – 61818</a></li>
+          <li><span class="de">Di – So: 11:30 – 14:30 · 17:00 – 22:00</span><span class="en">Tue – Sun: 11:30 – 14:30 · 17:00 – 22:00</span></li>
+          <li><span class="de">Montag Ruhetag</span><span class="en">Closed on Mondays</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span id="year"></span> Hikaru Sushi & Asia Kitchen</span>
+      <span><a href="impressum.html">Impressum</a><a href="datenschutz.html"><span class="de">Datenschutz</span><span class="en">Privacy</span></a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- Language ----------
+const langBtns=document.querySelectorAll('.lang-switch button');
+function setLang(l){
+  document.body.classList.toggle('lang-en',l==='en');
+  document.documentElement.lang=l;
+  langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  document.title=l==='en'?'Hikaru Sushi & Asia Kitchen – Bamberg':'Hikaru Sushi & Asia Kitchen – Bamberg';
+}
+langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+if((navigator.language||'').toLowerCase().startsWith('en'))setLang('en');
+
+// ---------- Nav ----------
+const nav=document.getElementById('nav'),links=document.getElementById('navLinks'),burger=document.getElementById('burger');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+burger.addEventListener('click',()=>{links.classList.toggle('open');burger.innerHTML=links.classList.contains('open')?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');burger.innerHTML='<i class="fa-solid fa-bars"></i>'}));
+
+// ---------- Menu tabs ----------
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab,.menu-panel').forEach(e=>e.classList.remove('active'));
+  t.classList.add('active');document.getElementById(t.dataset.panel).classList.add('active');
+}));
+
+// ---------- Gallery + lightbox ----------
+// Royalty-free Unsplash photos (Unsplash License) – replace with the restaurant's own photos in images/ when available: images/gallery-01.jpg … (see README)
+const photos=[
+  {src:'https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=1400&q=80',alt:'Sushi auf schwarzem Teller / Sushi on black plate',tall:true},
+  {src:'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1400&q=80',alt:'Special Rolls'},
+  {src:'https://images.unsplash.com/photo-1768326119231-bf064c1b8fdf?auto=format&fit=crop&w=1400&q=80',alt:'Poke Bowl'},
+  {src:'https://images.unsplash.com/photo-1754291815869-6474f5b3c365?auto=format&fit=crop&w=1400&q=80',alt:'Sashimi'},
+  {src:'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1400&q=80',alt:'Sushi-Auswahl / Sushi selection',tall:true},
+  {src:'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=1400&q=80',alt:'Lachs-Avocado-Rolls / Salmon avocado rolls'},
+  {src:'https://images.unsplash.com/photo-1633478062482-790e3b5dd810?auto=format&fit=crop&w=1400&q=80',alt:'Sushi mit Stäbchen / Sushi with chopsticks'}
+];
+const grid=document.getElementById('galleryGrid'),lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg');let cur=0;
+photos.forEach((p,i)=>{const d=document.createElement('div');d.className='tile'+(p.tall?' tall':'');d.innerHTML=`<img src="${p.src}" alt="${p.alt}" loading="lazy">`;d.addEventListener('click',()=>open(i));grid.appendChild(d)});
+function open(i){cur=i;lbImg.src=photos[cur].src;lbImg.alt=photos[cur].alt;lb.classList.add('open')}
+function close(){lb.classList.remove('open')}
+function step(n){open((cur+n+photos.length)%photos.length)}
+document.getElementById('lbClose').onclick=close;document.getElementById('lbPrev').onclick=()=>step(-1);document.getElementById('lbNext').onclick=()=>step(1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+
+// ---------- Today highlight ----------
+const today=new Date().getDay();document.querySelectorAll('#hoursTable tr').forEach(r=>{if(+r.dataset.day===today)r.classList.add('today')});
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('f-date').min=new Date().toISOString().split('T')[0];
+
+// ---------- Reservation form ----------
+const form=document.getElementById('resForm'),ok=document.getElementById('formOk'),err=document.getElementById('formErr'),btn=document.getElementById('submitBtn');
+form.addEventListener('submit',async e=>{
+  e.preventDefault();ok.classList.remove('show');err.classList.remove('show');
+  if(!form.checkValidity()){form.reportValidity();return}
+  btn.disabled=true;const old=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
+  try{
+    const r=await fetch(form.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
+    const d=await r.json();
+    if(d.success){ok.classList.add('show');form.reset()}else throw 0;
+  }catch{err.classList.add('show')}
+  btn.disabled=false;btn.innerHTML=old;
+});
+
+// ---------- Reveal on scroll ----------
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
