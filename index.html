@@ -163,7 +163,7 @@ nav.scrolled .brand-logo{height:40px}
 .map iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.1)}
 
 /* reservation */
-.res-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.res-grid{max-width:600px}
 .res-side p{color:var(--muted);margin-bottom:28px}
 .phone-big{display:inline-flex;align-items:center;gap:14px;font-family:var(--display);font-size:2.4rem;color:var(--gold);transition:.3s}
 .phone-big:hover{color:var(--accent)}
@@ -221,7 +221,7 @@ footer ul a:hover{color:var(--accent-2)}
   .nav-links.open{transform:none}
   .burger{display:block;z-index:110}
   .nav-cta{display:none}
-  .about-grid,.info-grid,.res-grid,.menu-panel{grid-template-columns:1fr}
+  .about-grid,.info-grid,.menu-panel{grid-template-columns:1fr}
   .about-img{max-width:420px}
   .about-img::before{display:none}
   .about-img .stamp{right:8px;bottom:20px;width:100px;height:100px;font-size:.9rem}
@@ -539,26 +539,6 @@ footer ul a:hover{color:var(--accent-2)}
       <p class="en">Secure your seat – for a quick lunch, dinner for two or a big group. We'll get back to you to confirm. Short notice? Calling is fastest.</p>
       <a href="tel:+4995161818" class="phone-big"><i class="fa-solid fa-phone"></i>0951 – 61818</a>
     </div>
-    <form id="resForm" action="https://api.web3forms.com/submit" method="POST" novalidate class="reveal">
-      <input type="hidden" name="access_key" value="HIER_DEINEN_ACCESS_KEY_EINFUEGEN">
-      <input type="hidden" name="subject" value="Neue Tischreservierung – Hikaru Website">
-      <input type="hidden" name="from_name" value="Hikaru Website">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required></div>
-      <div class="field"><label for="f-email">E-Mail</label><input id="f-email" name="email" type="email" required></div>
-      <div class="field"><label for="f-phone"><span class="de">Telefon</span><span class="en">Phone</span></label><input id="f-phone" name="phone" type="tel"></div>
-      <div class="field"><label for="f-party"><span class="de">Personen</span><span class="en">Guests</span></label>
-        <select id="f-party" name="party" required>
-          <option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9+">9+</option>
-        </select></div>
-      <div class="field"><label for="f-date"><span class="de">Datum</span><span class="en">Date</span></label><input id="f-date" name="date" type="date" required></div>
-      <div class="field"><label for="f-time"><span class="de">Uhrzeit</span><span class="en">Time</span></label><input id="f-time" name="time" type="time" required></div>
-      <div class="field full"><label for="f-msg"><span class="de">Nachricht (optional)</span><span class="en">Message (optional)</span></label><textarea id="f-msg" name="message"></textarea></div>
-      <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fa-solid fa-paper-plane"></i><span class="de">Reservierung senden</span><span class="en">Send reservation</span></button>
-      <div class="form-msg form-ok" id="formOk"><span class="de">Ihre Reservierungsanfrage ist eingegangen – wir freuen uns auf Ihren Besuch!</span><span class="en">Your reservation request has been received – we look forward to your visit!</span></div>
-      <div class="form-msg form-err" id="formErr"><span class="de">Etwas ist schiefgelaufen. Bitte rufen Sie uns an: 0951 – 61818</span><span class="en">Something went wrong. Please call us: 0951 – 61818</span></div>
-      <div class="small"><span class="de">Mit dem Absenden stimmen Sie unserer <a href="datenschutz.html">Datenschutzerklärung</a> zu.</span><span class="en">By submitting you agree to our <a href="datenschutz.html">privacy policy</a>.</span></div>
-    </form>
   </div>
 </section>
 
@@ -667,20 +647,6 @@ addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key
 const today=new Date().getDay();document.querySelectorAll('#hoursTable tr').forEach(r=>{if(+r.dataset.day===today)r.classList.add('today')});
 document.getElementById('year').textContent=new Date().getFullYear();
 document.getElementById('f-date').min=new Date().toISOString().split('T')[0];
-
-// ---------- Reservation form ----------
-const form=document.getElementById('resForm'),ok=document.getElementById('formOk'),err=document.getElementById('formErr'),btn=document.getElementById('submitBtn');
-form.addEventListener('submit',async e=>{
-  e.preventDefault();ok.classList.remove('show');err.classList.remove('show');
-  if(!form.checkValidity()){form.reportValidity();return}
-  btn.disabled=true;const old=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>';
-  try{
-    const r=await fetch(form.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
-    const d=await r.json();
-    if(d.success){ok.classList.add('show');form.reset()}else throw 0;
-  }catch{err.classList.add('show')}
-  btn.disabled=false;btn.innerHTML=old;
-});
 
 // ---------- Reveal on scroll ----------
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
